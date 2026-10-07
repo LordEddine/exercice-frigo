@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Le frigo — Le frigo de la coloc</title>
+    <meta name="description" content="Ajoutez, épinglez et retirez les post-its du frigo de la coloc.">
+    <link rel="stylesheet" href="vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark navbar-frigo">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">🧲 Le frigo de la coloc</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#menu" aria-controls="menu"
+                    aria-expanded="false" aria-label="Ouvrir le menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="frigo.html">Le frigo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reglages.html">Réglages</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="container py-4">
+    <h1 class="h2">Le frigo</h1>
+
+    <div class="row g-4">
+
+        <!-- Le formulaire d'ajout -->
+        <div class="col-lg-4">
+            <form id="formulaire-postit" class="carte" novalidate>
+                <h2 class="h5">Nouveau post-it</h2>
+
+                <label for="texte-postit" class="form-label fw-semibold">Message</label>
+                <textarea id="texte-postit" class="form-control" rows="3" maxlength="120"
+                          placeholder="Ex. : Qui a fini le lait ?"></textarea>
+                <div class="invalid-feedback">Écrivez au moins un mot.</div>
+                <p id="compteur-caracteres" class="compteur-caracteres mb-2">0 / 120</p>
+
+                <fieldset class="mb-3">
+                    <legend class="form-label fw-semibold fs-6">Couleur</legend>
+                    <div class="choix-couleurs">
+                        <input type="radio" name="couleur" id="couleur-jaune" value="jaune" checked>
+                        <label class="pastille pastille-jaune" for="couleur-jaune" title="Jaune">
+                            <span class="visually-hidden">Jaune</span>
+                        </label>
+
+                        <input type="radio" name="couleur" id="couleur-rose" value="rose">
+                        <label class="pastille pastille-rose" for="couleur-rose" title="Rose">
+                            <span class="visually-hidden">Rose</span>
+                        </label>
+
+                        <input type="radio" name="couleur" id="couleur-bleu" value="bleu">
+                        <label class="pastille pastille-bleu" for="couleur-bleu" title="Bleu">
+                            <span class="visually-hidden">Bleu</span>
+                        </label>
+
+                        <input type="radio" name="couleur" id="couleur-vert" value="vert">
+                        <label class="pastille pastille-vert" for="couleur-vert" title="Vert">
+                            <span class="visually-hidden">Vert</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <button type="submit" class="btn btn-primary w-100">Coller sur le frigo</button>
+            </form>
+
+            <button type="button" id="btn-vider" class="btn btn-outline-danger w-100 mt-3">
+                Vider le frigo
+            </button>
+        </div>
+
+        <!-- La porte du frigo -->
+        <div class="col-lg-8">
+            <div class="frigo">
+                <p id="frigo-vide" class="frigo-vide">
+                    Le frigo est vide. Collez votre premier post-it !
+                </p>
+                <!-- Les post-its sont créés ici par frigo.js -->
+                <div id="postits" class="postits"></div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="pied">
+    <div class="container">
+        Le frigo de la coloc · 420-931-MA Programmation Web (Front-End) · Séance 15
+    </div>
+</footer>
+
+<script src="vendor/bootstrap.bundle.min.js"></script>
+<script src="js/commun.js"></script>
+<script src="js/frigo.js"></script>
+</body>
+</html>

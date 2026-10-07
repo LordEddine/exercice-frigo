@@ -1,0 +1,373 @@
+/* =====================================================================
+   LE FRIGO DE LA COLOC — css/style.css
+   420-931-MA · Programmation Web (Front-End) · Séance 15
+
+   Cette feuille est COMPLÈTE : aujourd'hui, vous n'écrivez que du
+   JavaScript. Les classes que VOTRE code ajoute et retire :
+       .theme-sombre      sur <body>, si le réglage « mode sombre » est actif
+       .d-none            (Bootstrap) cacher un élément
+       .postit-jaune / -rose / -bleu / -vert    la couleur d'un post-it
+       .epingle           sur un post-it épinglé
+   ===================================================================== */
+
+
+/* ================================================================
+   [T1] VARIABLES — le thème clair, puis le thème sombre
+   Changer de thème = changer les variables. Rien d'autre.
+   ================================================================ */
+:root {
+    --fond: #eef1f4;
+    --texte: #1f2933;
+    --doux: #5f6b7a;
+    --carte: #ffffff;
+    --bordure: #d5dbe1;
+    --accent: #2563eb;
+    --frigo-haut: #f7f9fb;
+    --frigo-bas: #dde3e9;
+    --poignee: #b9c2cc;
+}
+
+body.theme-sombre {
+    --fond: #13171c;
+    --texte: #e6ebf0;
+    --doux: #9aa6b4;
+    --carte: #1d232b;
+    --bordure: #2e3742;
+    --accent: #7aa2ff;
+    --frigo-haut: #2a313a;
+    --frigo-bas: #1e242c;
+    --poignee: #4a5563;
+}
+
+body {
+    background-color: var(--fond);
+    color: var(--texte);
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+    color: var(--accent);
+}
+
+
+/* ================================================================
+   [T9] NAVIGATION — Bootstrap personnalisé par ses variables
+   ================================================================ */
+.navbar-frigo {
+    background-color: #1f2933;
+    --bs-navbar-color: rgba(255, 255, 255, 0.8);
+    --bs-navbar-hover-color: #ffffff;
+    --bs-navbar-active-color: #ffd166;
+    --bs-navbar-brand-color: #ffffff;
+    --bs-navbar-brand-hover-color: #ffd166;
+}
+
+.navbar-frigo .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.navbar-frigo .navbar-toggler-icon {
+    filter: invert(1);
+}
+
+
+/* ================================================================
+   CARTES ET FORMULAIRES — suivent le thème
+   ================================================================ */
+.carte {
+    background-color: var(--carte);
+    border: 1px solid var(--bordure);
+    border-radius: 1rem;
+    padding: 1.5rem;
+}
+
+.texte-doux {
+    color: var(--doux);
+}
+
+body.theme-sombre .form-control,
+body.theme-sombre .form-select {
+    background-color: #12161b;
+    color: var(--texte);
+    border-color: var(--bordure);
+}
+
+body.theme-sombre .form-control::placeholder {
+    color: #6c7886;
+}
+
+/* En thème sombre, les boutons « contour » de Bootstrap manquent de
+   contraste (3,8:1 et 4,0:1, mesurés ; il faut 4,5:1). On éclaircit
+   leur couleur par leurs variables. */
+body.theme-sombre .btn-outline-secondary {
+    --bs-btn-color: #ced4da;
+    --bs-btn-border-color: #6c757d;
+    --bs-btn-hover-color: #ffffff;
+    --bs-btn-hover-bg: #495057;
+    --bs-btn-hover-border-color: #6c757d;
+}
+
+body.theme-sombre .btn-outline-danger {
+    --bs-btn-color: #f28b95;
+    --bs-btn-border-color: #f28b95;
+    --bs-btn-hover-color: #13171c;
+    --bs-btn-hover-bg: #f28b95;
+    --bs-btn-hover-border-color: #f28b95;
+}
+
+.message-ok {
+    color: #15803d;
+    font-weight: 600;
+    min-height: 1.6em;
+}
+
+body.theme-sombre .message-ok {
+    color: #4ade80;
+}
+
+
+/* ================================================================
+   ACCUEIL
+   ================================================================ */
+.bienvenue {
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+    overflow-wrap: anywhere;
+}
+
+/* [T5] FLEXBOX — les trois chiffres de l'accueil */
+.chiffres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.chiffre {
+    flex: 1 1 12rem;
+    background-color: var(--carte);
+    border: 1px solid var(--bordure);
+    border-radius: 1rem;
+    padding: 1.25rem;
+    text-align: center;
+}
+
+.chiffre strong {
+    display: block;
+    font-size: 2.4rem;
+    line-height: 1.1;
+    color: var(--accent);
+}
+
+
+/* ================================================================
+   LE FRIGO — une porte de frigo, avec sa poignée
+   ================================================================ */
+.frigo {
+    position: relative;
+    background: linear-gradient(180deg, var(--frigo-haut), var(--frigo-bas));
+    border: 2px solid var(--bordure);
+    border-radius: 1.5rem;
+    padding: 2rem 2rem 2rem 3rem;
+    min-height: 22rem;
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.05);
+}
+
+.frigo::before {
+    content: "";
+    position: absolute;
+    left: 1rem;
+    top: 2rem;
+    width: 0.6rem;
+    height: 7rem;
+    border-radius: 99px;
+    background-color: var(--poignee);
+}
+
+/* [T6] GRID — les post-its se rangent tout seuls */
+.postits {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+    gap: 1.5rem;
+}
+
+.frigo-vide {
+    text-align: center;
+    color: var(--doux);
+    font-style: italic;
+    margin: 4rem 0;
+}
+
+
+/* ================================================================
+   UN POST-IT
+   ================================================================ */
+.postit {
+    position: relative;
+    min-height: 9rem;
+    padding: 1.6rem 1rem 1rem;
+    color: #2b2b2b;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+    transform: rotate(-1.5deg);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    overflow-wrap: anywhere;
+}
+
+/* [T3] PSEUDO-CLASSE STRUCTURELLE — un post-it sur deux penche à droite */
+.postit:nth-child(even) {
+    transform: rotate(1.5deg);
+}
+
+.postit:nth-child(3n) {
+    transform: rotate(-0.5deg);
+}
+
+/* [T8] ÉTATS */
+.postit:hover,
+.postit:focus-within {
+    transform: rotate(0deg) scale(1.03);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+    z-index: 2;
+}
+
+/* Les quatre couleurs. Une seule à la fois sur un post-it. */
+.postit-jaune { background-color: #fff3a3; }
+.postit-rose  { background-color: #ffc6d9; }
+.postit-bleu  { background-color: #c6e4ff; }
+.postit-vert  { background-color: #c9f2c7; }
+
+/* L'aimant, en haut du post-it */
+.postit::before {
+    content: "";
+    position: absolute;
+    top: 0.45rem;
+    left: 50%;
+    width: 1rem;
+    height: 1rem;
+    margin-left: -0.5rem;
+    border-radius: 50%;
+    background-color: #9aa3ad;
+    box-shadow: inset -2px -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Un post-it épinglé : aimant rouge et bordure */
+.postit.epingle {
+    outline: 3px solid #e63946;
+    outline-offset: -3px;
+}
+
+.postit.epingle::before {
+    background-color: #e63946;
+}
+
+.postit-texte {
+    margin: 0 0 2.2rem;
+    font-family: "Segoe Print", "Comic Sans MS", "Segoe UI", cursive;
+    font-size: 1.05rem;
+    line-height: 1.4;
+    white-space: pre-wrap;
+}
+
+/* Les deux petits boutons en bas du post-it */
+.postit-actions {
+    position: absolute;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.6rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-postit {
+    border: none;
+    background-color: rgba(255, 255, 255, 0.55);
+    border-radius: 0.5rem;
+    padding: 0.15rem 0.55rem;
+    font-size: 0.8rem;
+    color: #2b2b2b;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.btn-postit:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.btn-postit:focus-visible {
+    outline: 3px solid #1f2933;
+    outline-offset: 1px;
+}
+
+
+/* ================================================================
+   LE FORMULAIRE D'AJOUT — les pastilles de couleur
+   ================================================================ */
+.choix-couleurs {
+    display: flex;
+    gap: 0.6rem;
+}
+
+.choix-couleurs input {
+    position: absolute;
+    opacity: 0;
+}
+
+.pastille {
+    display: inline-block;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    cursor: pointer;
+}
+
+.choix-couleurs input:checked + .pastille {
+    border-color: var(--texte);
+}
+
+.choix-couleurs input:focus-visible + .pastille {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.pastille-jaune { background-color: #fff3a3; }
+.pastille-rose  { background-color: #ffc6d9; }
+.pastille-bleu  { background-color: #c6e4ff; }
+.pastille-vert  { background-color: #c9f2c7; }
+
+.compteur-caracteres {
+    font-size: 0.85rem;
+    color: var(--doux);
+    text-align: right;
+}
+
+
+/* ================================================================
+   [T7] TÉLÉPHONE
+   ================================================================ */
+@media (max-width: 575px) {
+    .frigo {
+        padding: 1.5rem 1rem 1.5rem 2rem;
+    }
+
+    .frigo::before {
+        left: 0.6rem;
+        width: 0.45rem;
+    }
+}
+
+.pied {
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    color: var(--doux);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--bordure);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;     /* exception justifiée : accessibilité */
+    }
+}

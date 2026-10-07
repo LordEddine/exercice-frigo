@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Accueil — Le frigo de la coloc</title>
+    <meta name="description" content="Le frigo virtuel de la coloc : des post-its qui restent collés, même après avoir fermé le navigateur.">
+    <link rel="stylesheet" href="vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark navbar-frigo">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">🧲 Le frigo de la coloc</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#menu" aria-controls="menu"
+                    aria-expanded="false" aria-label="Ouvrir le menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="frigo.html">Le frigo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reglages.html">Réglages</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="container py-5">
+    <!-- Le texte de ce titre est remplacé par accueil.js -->
+    <h1 id="bienvenue" class="bienvenue">Bonjour !</h1>
+    <p class="lead texte-doux">
+        Des post-its qui restent collés au frigo, même quand on ferme le navigateur.
+    </p>
+
+    <div class="chiffres mt-4">
+        <div class="chiffre">
+            <strong id="nb-visites">1</strong>
+            <span>visite(s) sur ce site</span>
+        </div>
+        <div class="chiffre">
+            <strong id="nb-postits">0</strong>
+            <span>post-it(s) sur le frigo</span>
+        </div>
+        <div class="chiffre">
+            <strong id="nb-epingles">0</strong>
+            <span>épinglé(s)</span>
+        </div>
+    </div>
+
+    <div class="mt-4 d-flex flex-wrap gap-2">
+        <a class="btn btn-primary btn-lg" href="frigo.html">Ouvrir le frigo</a>
+        <a class="btn btn-outline-secondary btn-lg" href="reglages.html">Mes réglages</a>
+    </div>
+
+    <p id="astuce-prenom" class="texte-doux mt-4">
+        Astuce : indiquez votre prénom dans les réglages, le frigo vous dira bonjour.
+    </p>
+</main>
+
+<footer class="pied">
+    <div class="container">
+        Le frigo de la coloc · 420-931-MA Programmation Web (Front-End) · Séance 15
+    </div>
+</footer>
+
+<script src="vendor/bootstrap.bundle.min.js"></script>
+<script src="js/commun.js"></script>
+<script src="js/accueil.js"></script>
+</body>
+</html>

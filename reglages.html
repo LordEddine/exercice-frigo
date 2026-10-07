@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Réglages — Le frigo de la coloc</title>
+    <meta name="description" content="Votre prénom, le mode sombre et la couleur de vos post-its, retenus par le navigateur.">
+    <link rel="stylesheet" href="vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark navbar-frigo">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">🧲 Le frigo de la coloc</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#menu" aria-controls="menu"
+                    aria-expanded="false" aria-label="Ouvrir le menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="frigo.html">Le frigo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="reglages.html">Réglages</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <h1 class="h2">Mes réglages</h1>
+            <p class="texte-doux">
+                Ils sont gardés par votre navigateur, sur cet ordinateur seulement.
+                Ils s'appliquent à toutes les pages du site.
+            </p>
+
+            <form id="formulaire-reglages" class="carte">
+                <div class="mb-3">
+                    <label for="prenom" class="form-label fw-semibold">Votre prénom</label>
+                    <input type="text" id="prenom" class="form-control" maxlength="20"
+                           autocomplete="given-name" placeholder="Ex. : Ahmed">
+                </div>
+
+                <div class="form-check form-switch mb-3">
+                    <input class="form-check-input" type="checkbox" role="switch" id="mode-sombre">
+                    <label class="form-check-label" for="mode-sombre">Mode sombre</label>
+                </div>
+
+                <div class="mb-3">
+                    <label for="couleur-defaut" class="form-label fw-semibold">
+                        Couleur de mes post-its, par défaut
+                    </label>
+                    <select id="couleur-defaut" class="form-select">
+                        <option value="jaune">Jaune</option>
+                        <option value="rose">Rose</option>
+                        <option value="bleu">Bleu</option>
+                        <option value="vert">Vert</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+                <p id="message-reglages" class="message-ok mt-3 mb-0" role="status"></p>
+            </form>
+
+            <div class="carte mt-4">
+                <h2 class="h5">Repartir à zéro</h2>
+                <p class="texte-doux">
+                    Efface les réglages, le compteur de visites et tous les post-its du frigo.
+                    Les autres sites et exercices ne sont pas touchés.
+                </p>
+                <button type="button" id="btn-reinitialiser" class="btn btn-outline-danger">
+                    Tout réinitialiser
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="pied">
+    <div class="container">
+        Le frigo de la coloc · 420-931-MA Programmation Web (Front-End) · Séance 15
+    </div>
+</footer>
+
+<script src="vendor/bootstrap.bundle.min.js"></script>
+<script src="js/commun.js"></script>
+<script src="js/reglages.js"></script>
+</body>
+</html>
